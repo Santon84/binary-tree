@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 24px;
+
+}
+
+:root {
+    --main-height: 20px;
+    --line-color: #446e00;
+}
+
+
+.node-tree ul {
+    float: left;
+    text-align: center;
+    list-style: none;
+    position: relative;
+    padding: 0 20px 0 20px;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+}
+
+.node-tree ul::before, .node-tree ul::after{
+    content: '';
+    position: absolute; 
+    top: 0;
+    right: 50%;
+    border-top: 1px solid var(--line-color);
+    width: 50%; height: var(--main-height);
+}
+.node-tree ul::after{
+    right: auto; left: 50%;
+}
+.node-tree ul:last-of-type::after{
+    border: 0 none;
+}
+
+.node-tree ul:first-of-type::before {
+    border: 0 none;
+}
+
+
+.node-tree li {
+    position: relative;
+    
+}
+.node-tree li div {
+    padding: 10px;
+    margin-bottom: var(--main-height);
+    margin-top: var(--main-height);
+}
+.node-tree li div span {
+    border-radius: 40px;
+    border: 1px solid var(--line-color);
+    padding: 10px;
+}
+.node-tree li::before {
+    content: '';
+    position: absolute; 
+    top: calc(var(--main-height) * -1); 
+    left: 50%;
+    border-left: 1px solid var(--line-color);
+    width: 50%; height: var(--main-height);
+}
+.node-tree li::after {
+    content: '';
+    position: absolute; 
+    bottom: calc(var(--main-height) * -1); 
+    right: calc(50% - 1px);
+    border-right: 1px solid var(--line-color);;
+    width: 50%; height: var(--main-height);
+}
+.node-tree ul:last-of-type::before{
+    border-right: 1px solid var(--line-color);
+    border-radius: 0 10px 0 0;
+    -webkit-border-radius: 0 10px 0 0;
+    -moz-border-radius: 0 10px 0 0;
+}
+.node-tree ul:first-of-type::after{
+    border-left: 1px solid var(--line-color);;
+    border-radius: 10px 0 0 0;
+    -webkit-border-radius: 10px 0 0 0;
+    -moz-border-radius: 10px 0 0 0;
+}
+.node-tree ul:only-of-type::after, .node-tree ul:only-of-type::before {
+   
+    border-radius: 0;
+}
+.node-tree ul:only-of-type::before {
+    border: none;
+}
+.node-tree ul li:first-child::before {
+    display: none;
+}
+
+.node-tree li:not(:has(ul))::after {
+    display: none;
+}
+.node-tree li div span:hover, .node-tree li div:hover ~ ul span{
+    background: #f34a5a; color: #ffffff; border: 1px solid #f34a5a;
+}
+
+
+.node-tree > ul:first-child > li::before, .node-tree > ul:first-child::after, .node-tree > ul:first-child::before  {
+    display: none;
+}
+
